@@ -153,3 +153,10 @@ git clone https://github.com/joaotavora/sly.git
 
 (provide 'init-markdown)
 完成上述代码后，执行命令M-x load-file重新加载init.el。即可发现，目前Emacs已经支持Markdown
+
+### C/C++
+
+eglot + clangd + auto-complete
+
+许多其他安装的packages都没有用到
+

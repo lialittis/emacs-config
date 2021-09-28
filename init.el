@@ -48,7 +48,9 @@
  '(next-error-highlight-no-select t)
  '(next-line-add-newlines nil)
  '(ocamlformat-enable (quote enable))
- '(package-selected-packages (quote (use-package ocamlformat auto-complete)))
+ '(package-selected-packages
+   (quote
+    (xcscope helm eglot irony-eldoc flycheck-irony ac-clang ac-c-headers yasnippet irony company-irony company TAB ggtags use-package ocamlformat auto-complete)))
  '(require-final-newline t)
  '(sentence-end-double-space nil)
  '(show-paren-mode t)
@@ -151,8 +153,8 @@
 ;; and `package-pinned-packages`. Most users will not need or want to do this.
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
-(setq package-archives '(("org" . "https://orgmode.org/elpa/")
-                         ("elpa" . "https://elpa.gnu.org/packages/")))
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+(add-to-list 'package-archives '("elpa" . "https://elpa.gnu.org/packages/") t)
 
 
 (package-initialize)
@@ -272,3 +274,105 @@
 ;;----------------Other packages-------------
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (require 'init-markdown)
+
+;;helm
+(require 'helm)
+
+;;----------------C/C++Programming-------------------
+
+(require 'eglot)
+(add-to-list 'eglot-server-programs '((c++-mode c-mode) "clangd-12"))
+(add-hook 'c-mode-hook 'eglot-ensure)
+(add-hook 'c++-mode-hook 'eglot-ensure)
+
+;;(require 'setup-general)
+;;(if (version< emacs-version "24.4")
+;;    (require 'setup-ivy-counsel)
+;;  (require 'setup-helm)
+;;  (require 'setup-helm-gtags))
+;; (require 'setup-ggtags)
+;;(require 'setup-cedet)
+;;(require 'setup-editing)
+
+;;headers
+(require 'ac-c-headers)
+(add-hook 'c-mode-hook
+          (lambda ()
+            (add-to-list 'ac-sources 'ac-source-c-headers)
+            (add-to-list 'ac-sources 'ac-source-c-header-symbols t)))
+
+(add-hook 'c++-mode-hook
+          (lambda ()
+            (add-to-list 'ac-sources 'ac-source-c-headers)
+            (add-to-list 'ac-sources 'ac-source-c-header-symbols t)))
+
+;;(require 'ac-clang)
+
+;;(when (ac-clang-initialize)
+;;  (add-hook 'c-mode-common-hook '(lambda ()
+;;                                   (setq clang-server-cflags CFLAGS)
+;;                                   (ac-clang-activate-after-modify))))
+
+;; company
+
+;;(require 'company
+;;  :config
+;;  (progn
+;;    (add-hook 'after-init-hook 'global-company-mode)
+;;    (global-set-key (kbd "M-/") 'company-complete-common-or-cycle)
+;;    (setq company-idle-delay 0)))
+
+
+;; yasnippet
+(require 'yasnippet)
+(yas-global-mode 1)
+
+;;flycheck
+;;(require 'flycheck
+;;  :config
+;;  (progn
+;;    (global-flycheck-mode)))
+
+(add-hook 'c++-mode-hook 'flycheck-mode)
+(add-hook 'c-mode-hook 'flycheck-mode)
+
+;;xcscope
+
+(require 'xcscope)
+(cscope-setup)
+
+;;cc-mode
+
+;;(add-to-list 'load-path "~/.emacs.d/lisp/cc-mode-5.35")
+;;(require 'cc-mode)
+;;(c-set-offset 'inline-open 0)
+;;(c-set-offset 'friend '-)
+;;(c-set-offset 'substatement-open 0)
+
+;;(defun my-c-mode-common-hook()
+;;  (setq tab-width 4 indent-tabs-mode nil)
+;;  ;;; hungry-delete and auto-newline
+;;  (c-toggle-auto-hungry-state 1)
+;;  ;;按键定义
+;;  (define-key c-mode-base-map [(control \`)] 'hs-toggle-hiding)
+;;  (define-key c-mode-base-map [(return)] 'newline-and-indent)
+;;  (define-key c-mode-base-map [(f7)] 'compile)
+;;  (define-key c-mode-base-map [(meta \`)] 'c-indent-command)
+;;;;  (define-key c-mode-base-map [(tab)] 'hippie-expand)
+;;;;  (define-key c-mode-base-map [(tab)] 'my-indent-or-complete)
+;;;;  (define-key c-mode-base-map [(meta ?/)] 'semantic-ia-complete-symbol-menu)
+;;  (setq c-macro-shrink-window-flag t)
+;;  (setq c-macro-preprocessor "cpp")
+;;  (setq c-macro-cppflags " ")
+;;  (setq c-macro-prompt-flag t)
+;;  (setq hs-minor-mode t)
+;;  (setq abbrev-mode t)
+;;)
+
+;;(add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
+
+;;(defun my-c++-mode-hook()
+;;  (setq tab-width 4 indent-tabs-mode nil)
+;;  (c-set-style "stroustrup")
+;;;;  (define-key c++-mode-map [f3] 'replace-regexp)
+;;)
