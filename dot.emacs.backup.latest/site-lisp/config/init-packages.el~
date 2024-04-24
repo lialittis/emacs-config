@@ -1,0 +1,23 @@
+;; You might already have this line
+(package-initialize)
+;; list the packages you want
+(defvar package-list)
+(setq package-list '(async auto-complete clang-format cmake-ide
+                           cmake-mode company company-irony
+                           company-irony-c-headers dash epl flycheck
+                           flycheck-irony flycheck-pyflakes 
+                           google-c-style helm helm-core helm-ctest
+                           helm-flycheck helm-flyspell helm-ls-git helm-ls-hg
+                           hungry-delete irony
+                           let-alist levenshtein markdown-mode pkg-info
+                           popup rtags seq solarized-theme vlf web-mode
+                           window-numbering writegood-mode yasnippet))
+;; fetch the list of packages available
+(unless package-archive-contents
+  (package-refresh-contents))
+;; install the missing packages
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
+
+(provide 'init-packages)

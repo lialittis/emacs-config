@@ -1,0 +1,27 @@
+;; Object semanticdb-project-database-file-1570ac67c874
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file-1570ac67c874"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table-1570ac67c854"
+      :major-mode c++-mode
+      :tags 
+        '( ("stdio.h" include (:system-flag t) nil [1 19])
+            ("a" variable (:type ("" type
+                 (:members 
+                    ( ("i" variable (:type "int") (reparse-symbol classsubparts) [32 38])
+                      ("x" variable
+                         (:dereference 1
+                          :type "char")
+                          (reparse-symbol classsubparts) [43 53]))                    
+                  :type "union")
+                  nil nil)) nil [21 57])
+            ("main" function (:type "int") nil [59 453]))          
+      :file "union.cpp"
+      :pointmax 454
+      :fsize 453
+      :lastmodtime '(26050 23715 533403 869000)
+      :unmatched-syntax nil))
+  :file "!home!tianchi!Workspace!Programming!CPP!CPP_Basic!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")
