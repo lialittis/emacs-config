@@ -40,7 +40,7 @@
         ;; 继续递归搜索子目录
         (add-subdirs-to-load-path subdir-path)))))
 
-(add-subdirs-to-load-path "/home/tianchi/MyEmacs/site-lisp")
+(add-subdirs-to-load-path "/home/tianchi/MyEmacs/Site-Lisp")
 
 
 ;; We don't want to type yes and no all the time so, do y and n
