@@ -44,7 +44,6 @@
   (eval . (add-to-list 'flycheck-clang-include-path "/usr/local/include"))
   (eval . (add-to-list 'flycheck-clang-include-path "/usr/include/c++/8"))
   (eval . (add-to-list 'flycheck-clang-include-path "/usr/include/clang"))
-  (eval . (add-to-list 'flycheck-clang-include-path "/usr/include/c++/8/x86_64-newstart-linux"))
   (eval . (add-to-list 'flycheck-clang-include-path "~/MyProject/include"))
   )
 ```
