@@ -2,6 +2,16 @@
 
 本库用来保存我的emacs配置，最新的emacs配置是基于Emacs29以及Emacs大佬Lazycat的配置和教程，将进行周期性的整理。
 
+首先，以基础的功能性为展示类目。
+
+## 初始化布局
+
+- session 的保存和恢复函数配置 init-session.el
+- 标签栏：![sort-tab](https://github.com/manateelazycat/sort-tab) 会根据文件使用的频率自动对标签进行排序， 用的越多的 Buffer 越靠左边
+
+
+
+
 ## treesitter
 
 
