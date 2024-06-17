@@ -7,8 +7,14 @@
 ## 初始化布局
 
 - session 的保存和恢复函数配置 init-session.el
-- 标签栏：![sort-tab](https://github.com/manateelazycat/sort-tab) 会根据文件使用的频率自动对标签进行排序， 用的越多的 Buffer 越靠左边
-
+- 标签栏：[sort-tab](https://github.com/manateelazycat/sort-tab) 会根据文件使用的频率自动对标签进行排序， 用的越多的 Buffer 越靠左边。下面为自定义快捷键：
+| Key Binding                | Function                         |
+|----------------------------|----------------------------------|
+| `C-x M-1`                 | `sort-tab-select-first-tab`      |
+| `C-x M-p`                 | `sort-tab-select-prev-tab`       |
+| `C-x M-n`                 | `sort-tab-select-next-tab`       |
+| `C-x M-Q`                 | `sort-tab-close-all-tabs`        |
+| `C-x M-q`                 | `sort-tab-close-current-tab`     |
 
 
 
