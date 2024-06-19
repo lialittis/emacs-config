@@ -49,7 +49,7 @@
     ;; (require 'mind-wave)
 
     (require 'init-highlight-parentheses)
-    ;; (require 'init-awesome-tray)
+    (require 'init-awesome-tray)
     (require 'init-line-number)
     (require 'init-lsp-bridge)
     (require 'init-auto-save)
@@ -98,11 +98,11 @@
         ;;  (require 'trekker)
         ;;  (trekker-enable)
 
-        ;;  ;; Restore session at last.
-        ;;  (require 'init-session)
-        ;;  (emacs-session-restore)
+        ;; Restore session at last.
+        (require 'init-session)
+        (emacs-session-restore)
 
-        ;;  (require 'init-sort-tab)
+        (require 'init-sort-tab)
         (message "DONE")
          ))))
 
