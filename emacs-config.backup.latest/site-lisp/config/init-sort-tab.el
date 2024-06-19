@@ -85,6 +85,17 @@
 ;;; Code:
 (sort-tab-mode 1)
 
+;;; keyboard
+;; (global-set-key (kbd "c-c s") 'sort-tab-select-visible-nth-tab)
+;; (global-set-key (kbd "s-7") 'sort-tab-select-visible-tab)
+(global-set-key (kbd "C-x M-1") 'sort-tab-select-first-tab)
+(global-set-key (kbd "C-x M-p") 'sort-tab-select-prev-tab)
+(global-set-key (kbd "C-x M-n") 'sort-tab-select-next-tab)
+
+(global-set-key (kbd "C-x M-Q") 'sort-tab-close-all-tabs)
+;; (global-set-key (kbd "s-q") 'sort-tab-close-mode-tabs)
+(global-set-key (kbd "C-x M-q") 'sort-tab-close-current-tab)
+
 (provide 'init-sort-tab)
 
 ;;; init-sort-tab.el ends here
