@@ -96,8 +96,29 @@
 
 (global-lsp-bridge-mode)
 
-;; 打开日志，开发者才需要
-;; (setq lsp-bridge-enable-log t)
+;; 融合 `lsp-bridge' `find-function' 以及 `dumb-jump' 的智能跳转
+(defun lsp-bridge-jump ()
+  (interactive)
+  (cond
+   ((eq major-mode 'emacs-lisp-mode)
+    (let ((symb (function-called-at-point)))
+      (when symb
+        (find-function symb))))
+   (lsp-bridge-mode
+    (lsp-bridge-find-def))
+   (t
+    (require 'dumb-jump)
+    (dumb-jump-go))))
+
+(defun lsp-bridge-jump-back ()
+  (interactive)
+  (cond
+   (lsp-bridge-mode
+    (lsp-bridge-find-def-return))
+   (t
+    (require 'dumb-jump)
+    (dumb-jump-back))))
+
 
 (setq lsp-bridge-get-multi-lang-server-by-project
       (lambda (project-path filepath)
@@ -111,11 +132,25 @@
                   (when (search-forward-regexp (regexp-quote "from \"https://deno.land") nil t)
                     (return "deno")))))))))
 
-;; Support jump to define of EAF root from EAF application directory.
-(setq lsp-bridge-get-project-path-by-filepath
-      (lambda (filepath)
-        (when (string-prefix-p (expand-file-name "~/lazycat-emacs/site-lisp/extensions/emacs-application-framework/app") filepath)
-          (expand-file-name "~/lazycat-emacs/site-lisp/extensions/emacs-application-framework/"))))
+;;Support jump to define of EAF root from EAF application directory.
+;; (setq lsp-bridge-get-project-path-by-filepath
+;;       (lambda (filepath)
+;;         (when (string-prefix-p (expand-file-name "~/MyEmacs/site-lisp/extensions/emacs-application-framework/app") filepath)
+;;           (expand-file-name "~/MyEmacs/site-lisp/extensions/emacs-application-framework/"))))
+
+;; (defun my-get-project-path (filepath)
+;;   (let ((project-root (projectile-project-root)))
+;;     (expand-file-name  project-root)))
+;; (setq lsp-bridge-get-project-path-by-filepath #'my-get-project-path)
+
+(global-set-key (kbd "C-x M-f d") 'lsp-bridge-find-def)
+(global-set-key (kbd "C-x M-f D") 'lsp-bridge-find-def-other-window)
+(global-set-key (kbd "C-x M-f i") 'lsp-bridge-find-impl)
+(global-set-key (kbd "C-x M-f I") 'lsp-bridge-find-impl-other-window)
+(global-set-key (kbd "C-x M-f r") 'lsp-bridge-find-references)
+
+;; 打开日志，开发者才需要
+;; (setq lsp-bridge-enable-log t)
 
 (provide 'init-lsp-bridge)
 
