@@ -81,6 +81,8 @@
         ;;  (require 'pretty-lambdada)
         ;;  (require 'browse-kill-ring)
         ;;  (require 'elf-mode)
+        (require 'init-dired)
+        (require 'init-wind)
 
         ;;  (require 'init-eldoc)
         (require 'init-yasnippet)
