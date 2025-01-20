@@ -1,6 +1,8 @@
 # Make Emacs Better!
 
-本库用来保存我的emacs配置，最新的emacs配置是基于Emacs29以及Emacs大佬Lazycat的配置和教程，将进行周期性的整理。
+本库用来保存我的emacs配置，最新的emacs配置是基于Emacs29,并且深度依赖Emacs大佬Lazycat的[配置](https://github.com/manateelazycat/lazycat-emacs/tree/89562052b9885e83a4d7a3b2ab5cbe3dbbfcfc19)和教程。
+因此本库将对代码进行周期性的调整和归置，并逐渐对库的原始路径进行更新，代码的来源均来自于Lazycat及各类开源库，本人系新进emacser，才疏学浅，仅在其基础上进行了微调和补充。
+
 
 首先，以基础的功能性为展示类目。
 
