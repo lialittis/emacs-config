@@ -51,6 +51,12 @@
 ### 找到定义或引用
 1. xref
 
+| Key Binding                | Function                         |
+|----------------------------|----------------------------------|
+| `M-,`                 | `xref-go-back`      |
+| `C-M-,`                 | `xref-go-forward`       |
+| `M-.`                 | `xref-find-definitions`       |
+
 2. lsp-bridge
 
 #### Pass initialization options to `clangd`.
