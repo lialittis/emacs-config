@@ -53,6 +53,30 @@
 
 2. lsp-bridge
 
+#### Pass initialization options to `clangd`.
+
+There are two approaches to achieve this.
+
+The first option is configuring the options directly in `lsp-bridge`, but it might need more customed fuctions to do this.
+
+[TODO]
+
+The second option is using a compilation database, by generate a `compile_commands.json` file in the project directory.
+To do this, you only need add this into your CMakeLists.txt file
+
+```
+# Add this line, to enable compile command export
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+```
+
+or alternatively, you could pass this option along as arguments, e.g.
+
+```
+cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .
+```
+
+
+
 3. flycheck
 
 针对不同项目预设不同的flycheck路径（在.dir-locals.el）：
